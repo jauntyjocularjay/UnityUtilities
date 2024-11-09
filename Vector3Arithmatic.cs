@@ -14,16 +14,13 @@ public class Vector3Arithmatic
 
         for(int i = 1; i < vectors.Count; i++)
         {
-            float x = result.x;
-            float y = result.y;
-            float z = result.z;
-
-            x *= vectors[i].x;
-            y *= vectors[i].y;
-            z *= vectors[i].z;
-
-            result = new Vector3(x,y,z);
+            result = new Vector3(
+                result.x * vectors[i].x,
+                result.y * vectors[i].y,
+                result.z * vectors[i].z
+            );
         }
+
         return result;
     }
 
@@ -33,15 +30,11 @@ public class Vector3Arithmatic
 
         for(int i = 1; i < vectors.Count; i++)
         {
-            float x = result.x;
-            float y = result.y;
-            float z = result.z;
-
-            x /= vectors[i].x;
-            y /= vectors[i].y;
-            z /= vectors[i].z;
-
-            result = new Vector3(x,y,z);
+            result = new Vector3(
+                result.x / vectors[i].x,
+                result.y / vectors[i].y,
+                result.z / vectors[i].z
+            );
         }
         return result;
     }
