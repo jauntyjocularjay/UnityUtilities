@@ -63,55 +63,60 @@ public class VectorArithmatic
     {
         Vector4 result = new Vector4(0,0,0,0);
 
-        if(combination.length != 4)
+        if(combination.Length != 4)
         {
             throw new InvalidCharacterException($"Your combination does NOT have exactly 4 characters.");
         }
 
-        case(combination.CharAt(0))
+        switch(combination[0])
         {
-            'x':
+            case 'x':
                 result.w = vector2.x;
                 break;
-            'y':
+            case 'y':
                 result.w = vector2.y;
-            default: 
+                break;
+            default:
                 throw new InvalidVector2String("Vector4", combination);
         }
         
-        case(combination.CharAt(1))
+        switch(combination[1])
         {
-            'x':
+            case 'x':
                 result.x = vector2.x;
                 break;
-            'y':
+            case 'y':
                 result.x = vector2.y;
+                break;
             default:
                 throw new InvalidVector2String("Vector4", combination);
         }
         
-        case(combination.CharAt(2))
+        switch(combination[2])
         {
-            'x':
+            case 'x':
                 result.y = vector2.x;
                 break;
-            'y':
+            case 'y':
                 result.y = vector2.y;
+                break;
             default:
                 throw new InvalidVector2String("Vector4", combination);
         }
         
-        case(combination.CharAt(3))
+        switch(combination[3])
         {
-            'x':
+            case 'x':
                 result.z = vector2.x;
                 break;
-            'y':
+            case 'y':
                 result.z = vector2.y;
+                break;
             default:
                 throw new InvalidVector2String("Vector4", combination);
         }
         
+        return result;
     }
 
 
@@ -133,11 +138,12 @@ public class InvalidCharacterException : System.Exception
     public InvalidCharacterException(string message) : base(message) { }
     public InvalidCharacterException(string message, System.Exception inner) : base(message, inner) { }
     protected InvalidCharacterException(
-        System.RuntimamingContext context) : base(info, context) { }
+        System.Runtime.Serialization.SerializationInfo info,
+        System.Runtime.Serialization.StreamingContext context) : base(info, context) { }
 }
 
 class InvalidVector2String : InvalidCharacterException
-{   public InvalidVector2String(string vector, string combination) { } : base("To " + vector + "(Vector2, string) only allows the characters 'x' & 'y'. You provided the string " + combination)
+{   public InvalidVector2String(string vector, string combination) : base("To " + vector + "(Vector2, string) only allows the characters 'x' & 'y'. You provided the string " + combination) { }
     public InvalidVector2String(string message) : base(message) { }
     public InvalidVector2String(string message, System.Exception inner) : base(message, inner) { }
     protected InvalidVector2String(
@@ -146,7 +152,7 @@ class InvalidVector2String : InvalidCharacterException
 }
 
 class InvalidVector3String : InvalidCharacterException
-{   public InvalidVector3String(string vector, string combination) { } : base("To " + vector + "(Vector3, string) only allows the characters 'x', 'y' & 'z'. You provided the string " + combination)
+{   public InvalidVector3String(string vector, string combination) : base("To " + vector + "(Vector3, string) only allows the characters 'x', 'y' & 'z'. You provided the string " + combination) { }
     public InvalidVector3String(string message) : base(message) { }
     public InvalidVector3String(string message, System.Exception inner) : base(message, inner) { }
     protected InvalidVector3String(
@@ -155,7 +161,7 @@ class InvalidVector3String : InvalidCharacterException
 }
 
 class InvalidVector4String : InvalidCharacterException
-{   public InvalidVector4String(string vector, string combination) { } : base("To " + vector + "(Vector4, string) only allows the characters 'w', 'x', 'y' & 'z'. You provided the string " + combination)
+{   public InvalidVector4String(string vector, string combination) : base("To " + vector + "(Vector4, string) only allows the characters 'w', 'x', 'y' & 'z'. You provided the string " + combination) {}
     public InvalidVector4String(string message) : base(message) { }
     public InvalidVector4String(string message, System.Exception inner) : base(message, inner) { }
     protected InvalidVector4String(
