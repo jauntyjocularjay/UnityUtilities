@@ -162,12 +162,12 @@ public class VectorArithmatic
         return result;
     }
 
-    // static public Vector4 ToVector4(Vector3 vector3, string combination)
-    // {
-    //     Vector4 result = new Vector4();
+    static public Vector4 ToVector4(Vector3 vector3, string combination)
+    {
+        Vector4 result = new Vector4();
 
-    //     return result;
-    // }
+        return result;
+    }
 
     // Vector4 Conversions
 
