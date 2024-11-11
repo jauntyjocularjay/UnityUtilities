@@ -4,7 +4,7 @@ using Unity.Mathematics;
 
 /*
  * 2024 GitHub @ jauntyjocularjay
- * Vector3Arithmatic is a suite of operations to make processing vectors easier.
+ * VectorArithmatic is a suite of operations to make processing vectors easier.
  * License: MIT
 */
 public class VectorArithmatic
