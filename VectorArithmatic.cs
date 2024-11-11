@@ -166,11 +166,55 @@ public class VectorArithmatic
     {
         Vector4 result = new Vector4();
 
+        result.x = combination[0] switch
+        {
+            'x' => vector3.x,
+            'y' => vector3.y,
+            'z' => vector3.z,
+            _ => throw new InvalidVector4String(combination)
+        };
+
+        result.y = combination[1] switch
+        {
+            'x' => vector3.x,
+            'y' => vector3.y,
+            'z' => vector3.z,
+            _ => throw new InvalidVector4String(combination)
+        };
+
+        result.z = combination[2] switch
+        {
+            'x' => vector3.x,
+            'y' => vector3.y,
+            'z' => vector3.z,
+            _ => throw new InvalidVector4String(combination)
+        };
+
+        result.w = combination[3] switch
+        {
+            'x' => vector3.x,
+            'y' => vector3.y,
+            'z' => vector3.z,
+            _ => throw new InvalidVector4String(combination)
+        };
+
         return result;
     }
 
     // Vector4 Conversions
+    // static public Vector2 ToVector2(Vector4 vector4, string combination)
+    // {
+    //     Vector2 result = new Vector2();
 
+    //     return result;
+    // }
+
+    // static public Vector3 ToVector3(Vector4 vector4, string combination)
+    // {
+    //     Vector3 result = new Vector3();
+
+    //     return result;
+    // }
 
 
 
