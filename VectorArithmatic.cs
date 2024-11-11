@@ -58,6 +58,40 @@ public class VectorArithmatic
         return result;
     }
 
+    // Vector2 Conversions
+    static public Vector3 ToVector3(Vector2 vector2, string combination)
+    // Conversion from Vector2 to Vector4
+    {
+        Vector3 result = new Vector3(0,0,0);
+
+        if(combination.Length != 4)
+        {
+            throw new InvalidCharacterException($"Your combination does NOT have exactly 4 characters.");
+        }
+
+        result.x = combination[0] switch
+        {
+            'x' => vector2.x,
+            'y' => vector2.y,
+            _ => throw new InvalidVector2String("Vector4", combination),
+        };
+
+        result.y = combination[1] switch
+        {
+            'x' => vector2.x,
+            'y' => vector2.y,
+            _ => throw new InvalidVector2String("Vector4", combination),
+        };
+
+        result.z = combination[2] switch
+        {
+            'x' => vector2.x,
+            'y' => vector2.y,
+            _ => throw new InvalidVector2String("Vector4", combination),
+        };
+        
+        return result;
+    }
     static public Vector4 ToVector4(Vector2 vector2, string combination)
     // Conversion from Vector2 to Vector4
     {
@@ -68,58 +102,40 @@ public class VectorArithmatic
             throw new InvalidCharacterException($"Your combination does NOT have exactly 4 characters.");
         }
 
-        switch(combination[0])
+        result.w = combination[0] switch
         {
-            case 'x':
-                result.w = vector2.x;
-                break;
-            case 'y':
-                result.w = vector2.y;
-                break;
-            default:
-                throw new InvalidVector2String("Vector4", combination);
-        }
-        
-        switch(combination[1])
+            'x' => vector2.x,
+            'y' => vector2.y,
+            _ => throw new InvalidVector2String("Vector4", combination),
+        };
+
+        result.x = combination[1] switch
         {
-            case 'x':
-                result.x = vector2.x;
-                break;
-            case 'y':
-                result.x = vector2.y;
-                break;
-            default:
-                throw new InvalidVector2String("Vector4", combination);
-        }
-        
-        switch(combination[2])
+            'x' => vector2.x,
+            'y' => vector2.y,
+            _ => throw new InvalidVector2String("Vector4", combination),
+        };
+
+        result.y = combination[2] switch
         {
-            case 'x':
-                result.y = vector2.x;
-                break;
-            case 'y':
-                result.y = vector2.y;
-                break;
-            default:
-                throw new InvalidVector2String("Vector4", combination);
-        }
-        
-        switch(combination[3])
+            'x' => vector2.x,
+            'y' => vector2.y,
+            _ => throw new InvalidVector2String("Vector4", combination),
+        };
+
+        result.z = combination[3] switch
         {
-            case 'x':
-                result.z = vector2.x;
-                break;
-            case 'y':
-                result.z = vector2.y;
-                break;
-            default:
-                throw new InvalidVector2String("Vector4", combination);
-        }
+            'x' => vector2.x,
+            'y' => vector2.y,
+            _ => throw new InvalidVector2String("Vector4", combination),
+        };
         
         return result;
     }
 
+    // Vector3 Conversions
 
+    // Vector4 Conversions
 
 
 
