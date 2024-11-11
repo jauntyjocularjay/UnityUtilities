@@ -64,9 +64,9 @@ public class VectorArithmatic
     {
         Vector3 result = new Vector3(0,0,0);
 
-        if(combination.Length != 4)
+        if(combination.Length != 3)
         {
-            throw new InvalidCharacterException($"Your combination does NOT have exactly 4 characters.");
+            throw new InvalidCharacterException(combination);
         }
 
         result.x = combination[0] switch
@@ -102,28 +102,28 @@ public class VectorArithmatic
             throw new InvalidCharacterException($"Your combination does NOT have exactly 4 characters.");
         }
 
-        result.w = combination[0] switch
+        result.x = combination[0] switch
         {
             'x' => vector2.x,
             'y' => vector2.y,
             _ => throw new InvalidVector2String("Vector4", combination),
         };
 
-        result.x = combination[1] switch
+        result.y = combination[1] switch
         {
             'x' => vector2.x,
             'y' => vector2.y,
             _ => throw new InvalidVector2String("Vector4", combination),
         };
 
-        result.y = combination[2] switch
+        result.z = combination[2] switch
         {
             'x' => vector2.x,
             'y' => vector2.y,
             _ => throw new InvalidVector2String("Vector4", combination),
         };
 
-        result.z = combination[3] switch
+        result.w = combination[3] switch
         {
             'x' => vector2.x,
             'y' => vector2.y,
@@ -134,6 +134,40 @@ public class VectorArithmatic
     }
 
     // Vector3 Conversions
+    static public Vector2 ToVector2(Vector3 vector3, string combination)
+    {
+        Vector2 result = new Vector2();
+
+        if(combination.Length != 2)
+        {
+            throw new InvalidVector3String("Vector2", combination);
+        }
+
+        result.x = combination[0] switch
+        {
+            'x' => vector3.x,
+            'y' => vector3.y,
+            'z' => vector3.z,
+            _ => throw new InvalidVector3String(combination)
+        };
+
+        result.y = combination[1] switch 
+        {
+            'x' => vector3.x,
+            'y' => vector3.y,
+            'z' => vector3.z,
+            _ => throw new InvalidVector3String(combination)
+        };
+
+        return result;
+    }
+
+    // static public Vector4 ToVector4(Vector3 vector3, string combination)
+    // {
+    //     Vector4 result = new Vector4();
+
+    //     return result;
+    // }
 
     // Vector4 Conversions
 
@@ -160,7 +194,7 @@ public class InvalidCharacterException : System.Exception
 
 class InvalidVector2String : InvalidCharacterException
 {   public InvalidVector2String(string vector, string combination) : base("To " + vector + "(Vector2, string) only allows the characters 'x' & 'y'. You provided the string " + combination) { }
-    public InvalidVector2String(string message) : base(message) { }
+    public InvalidVector2String(string combination) : base($"Your string {combination} does NOT have exactly 2 characters.") { }
     public InvalidVector2String(string message, System.Exception inner) : base(message, inner) { }
     protected InvalidVector2String(
         System.Runtime.Serialization.SerializationInfo info,
@@ -169,7 +203,7 @@ class InvalidVector2String : InvalidCharacterException
 
 class InvalidVector3String : InvalidCharacterException
 {   public InvalidVector3String(string vector, string combination) : base("To " + vector + "(Vector3, string) only allows the characters 'x', 'y' & 'z'. You provided the string " + combination) { }
-    public InvalidVector3String(string message) : base(message) { }
+    public InvalidVector3String(string combination) : base($"Your string {combination} does NOT have exactly 3 characters.") { }
     public InvalidVector3String(string message, System.Exception inner) : base(message, inner) { }
     protected InvalidVector3String(
         System.Runtime.Serialization.SerializationInfo info,
@@ -178,7 +212,7 @@ class InvalidVector3String : InvalidCharacterException
 
 class InvalidVector4String : InvalidCharacterException
 {   public InvalidVector4String(string vector, string combination) : base("To " + vector + "(Vector4, string) only allows the characters 'w', 'x', 'y' & 'z'. You provided the string " + combination) {}
-    public InvalidVector4String(string message) : base(message) { }
+    public InvalidVector4String(string combination) : base($"Your string {combination} does NOT have exactly 4 characters.") { }
     public InvalidVector4String(string message, System.Exception inner) : base(message, inner) { }
     protected InvalidVector4String(
         System.Runtime.Serialization.SerializationInfo info,
