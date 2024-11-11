@@ -140,7 +140,7 @@ public class VectorArithmatic
 
         if(combination.Length != 2)
         {
-            throw new InvalidVector3String("Vector2", combination);
+            throw new InvalidVector3String("Vector3", combination);
         }
 
         result.x = combination[0] switch
@@ -161,10 +161,14 @@ public class VectorArithmatic
 
         return result;
     }
-
     static public Vector4 ToVector4(Vector3 vector3, string combination)
     {
         Vector4 result = new Vector4();
+
+        if(combination.Length != 4)
+        {
+            throw new InvalidVector3String("Vector3", combination);
+        }
 
         result.x = combination[0] switch
         {
@@ -202,26 +206,73 @@ public class VectorArithmatic
     }
 
     // Vector4 Conversions
-    // static public Vector2 ToVector2(Vector4 vector4, string combination)
-    // {
-    //     Vector2 result = new Vector2();
+    static public Vector2 ToVector2(Vector4 vector4, string combination)
+    {
+        Vector2 result = new Vector2();
 
-    //     return result;
-    // }
+        if(combination.Length != 2)
+        {
+            throw new InvalidVector3String("Vector4", combination);
+        }
 
-    // static public Vector3 ToVector3(Vector4 vector4, string combination)
-    // {
-    //     Vector3 result = new Vector3();
+        result.x = combination[0] switch
+        {
+            'x' => vector4.x,
+            'y' => vector4.y,
+            'z' => vector4.z,
+            'w' => vector4.w,
+            _ => throw new InvalidVector4String(combination)
+        };
 
-    //     return result;
-    // }
+        result.y = combination[1] switch
+        {
+            'x' => vector4.x,
+            'y' => vector4.y,
+            'z' => vector4.z,
+            'w' => vector4.w,
+            _ => throw new InvalidVector4String(combination)
+        };
 
+        return result;
+    }
+    static public Vector3 ToVector3(Vector4 vector4, string combination)
+    {
+        Vector3 result = new Vector3();
 
+        if(combination.Length != 3)
+        {
+            throw new InvalidVector3String("Vector4", combination);
+        }
 
+        result.x = combination[0] switch
+        {
+            'x' => vector4.x,
+            'y' => vector4.y,
+            'z' => vector4.z,
+            'w' => vector4.w,
+            _ => throw new InvalidVector4String(combination)
+        };
 
+        result.y = combination[1] switch
+        {
+            'x' => vector4.x,
+            'y' => vector4.y,
+            'z' => vector4.z,
+            'w' => vector4.w,
+            _ => throw new InvalidVector4String(combination)
+        };
 
+        result.z = combination[2] switch
+        {
+            'x' => vector4.x,
+            'y' => vector4.y,
+            'z' => vector4.z,
+            'w' => vector4.w,
+            _ => throw new InvalidVector4String(combination)
+        };
 
-
+        return result;
+    }
 
 }
 
